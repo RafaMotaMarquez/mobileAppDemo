@@ -1,0 +1,7 @@
+{
+  "name": "ionicDevextremeDemoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
