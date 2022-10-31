@@ -1,43 +1,36 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">UPU user list</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <BaseLayout pageTitle="UPU user list">
+      <template v-slot:actions-end>
+        <ion-button router-link="/memories/add">
+          <ion-icon slot="icon-only" :icon="add"></ion-icon>
+        </ion-button>
+      </template>
+
       <UserList name="Tab 1 page" />
-    </ion-content>
+    </BaseLayout>
   </ion-page>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-} from "@ionic/vue";
+import { IonPage, IonButton, IonIcon } from "@ionic/vue";
 import UserList from "@/components/business/UserList.vue";
+import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 
-export default defineComponent({
+import { add } from "ionicons/icons";
+
+export default {
   name: "Tab1Page",
   components: {
+    BaseLayout,
     UserList,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
+    IonButton,
+    IonIcon,
     IonPage,
   },
+  data() {
+    return { add };
+  },
   methods: {},
-});
+};
 </script>

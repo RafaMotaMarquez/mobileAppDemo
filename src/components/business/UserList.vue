@@ -20,11 +20,10 @@
 
 <script>
 import { IonItem, IonLabel, IonList } from "@ionic/vue";
-import { defineComponent } from "vue";
 
-export default defineComponent({
+export default {
   components: { IonItem, IonLabel, IonList },
-});
+};
 </script>
-<style lang="scss">
+<style>
 </style>

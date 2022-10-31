@@ -1,16 +1,12 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 2</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <core-header />
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 2</ion-title>
-        </ion-toolbar>
-      </ion-header>
+      <ion-toolbar class="ion-margin-bottom">
+        <ion-title size="default" class="ion-text-uppercase"
+          >Advanced data search</ion-title
+        >
+      </ion-toolbar>
       <DxChart :data-source="data">
         <DxArgumentAxis :tick-interval="10" />
         <DxSeries type="bar" />
@@ -22,14 +18,9 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-} from "@ionic/vue";
+import CoreHeader from "@/components/core/CoreHeader.vue";
+
+import { IonPage, IonToolbar, IonTitle, IonContent } from "@ionic/vue";
 import ExploreContainer from "@/components/ExploreContainer.vue";
 import DxChart, {
   DxArgumentAxis,
@@ -52,11 +43,11 @@ const data = [
   },
 ];
 
-export default defineComponent({
+export default {
   name: "Tab2Page",
   components: {
+    CoreHeader,
     ExploreContainer,
-    IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
@@ -71,5 +62,5 @@ export default defineComponent({
       data,
     };
   },
-});
+};
 </script>
