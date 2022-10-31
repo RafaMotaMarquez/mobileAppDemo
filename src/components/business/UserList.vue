@@ -1,8 +1,12 @@
 <template>
   <ion-list>
-    <ion-item v-for="data in dataSource" :key="data.id">
+    <ion-item
+      v-for="data in dataSource"
+      :key="data.id"
+      :router-link="`/users/${data.id}`"
+    >
       <ion-thumbnail slot="start">
-        <ion-img :src="data.image" :alt="data.title"></ion-img>
+        <ion-img :src="data.image" :alt="data.name"></ion-img>
       </ion-thumbnail>
       <ion-label>{{ data.name }}</ion-label>
       <ion-label>{{ data.firstname }}</ion-label>

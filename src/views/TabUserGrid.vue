@@ -38,7 +38,7 @@ import {
 } from "devextreme-vue/data-grid";
 
 export default {
-  name: "Tab2Page",
+  name: "TabUserGrid",
   components: {
     BaseLayout,
     IonPage,

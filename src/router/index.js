@@ -3,30 +3,35 @@ import TabsPage from '../views/TabsPage.vue'
 
 const routes = [{
         path: '/',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/users'
+    },
+    {
+        path: '/users/:id',
+        component: () =>
+            import ('../views/UserDetails.vue')
     },
     {
         path: '/tabs/',
         component: TabsPage,
         children: [{
                 path: '',
-                redirect: '/tabs/tab1'
+                redirect: '/tabs/users'
             },
             {
-                path: 'tab1',
+                path: 'users',
                 component: () =>
-                    import ('@/views/Tab1Page.vue')
+                    import ('@/views/TabUserList.vue')
             },
             {
-                path: 'tab2',
+                path: 'users-grid',
                 component: () =>
-                    import ('@/views/Tab2Page.vue')
+                    import ('@/views/TabUserGrid.vue')
             },
             {
-                path: 'tab3',
+                path: 'users-report',
                 component: () =>
-                    import ('@/views/Tab3Page.vue')
-            }
+                    import ('@/views/TabUserReport.vue')
+            },
         ]
     }
 ]

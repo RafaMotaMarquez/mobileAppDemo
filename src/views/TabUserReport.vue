@@ -36,7 +36,7 @@ const data = [
 ];
 
 export default {
-  name: "Tab3Page",
+  name: "TabUserReport",
   components: {
     BaseLayout,
     IonPage,

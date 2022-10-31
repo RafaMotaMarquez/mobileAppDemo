@@ -2,11 +2,11 @@
   <ion-page>
     <BaseLayout pageTitle="UPU user list">
       <template v-slot:actions-end>
-        <ion-button router-link="/userList/add">
+        <ion-button router-link="/users/add">
           <ion-icon slot="icon-only" :icon="add"></ion-icon>
         </ion-button>
       </template>
-      <UserList name="Tab 1 page" />
+      <UserList />
     </BaseLayout>
   </ion-page>
 </template>
@@ -19,7 +19,7 @@ import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 import { add } from "ionicons/icons";
 
 export default {
-  name: "Tab1Page",
+  name: "TabUserList",
   components: {
     BaseLayout,
     UserList,
