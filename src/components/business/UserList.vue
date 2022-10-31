@@ -1,28 +1,32 @@
 <template>
   <ion-list>
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
+    <ion-item v-for="data in dataSource" :key="data.id">
+      <ion-thumbnail slot="start">
+        <ion-img :src="data.image" :alt="data.title"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{ data.name }}</ion-label>
+      <ion-label>{{ data.firstname }}</ion-label>
+      <ion-label>{{ data.direction }}</ion-label>
     </ion-item>
   </ion-list>
 </template>
 
 <script>
-import { IonItem, IonLabel, IonList } from "@ionic/vue";
+import { IonItem, IonLabel, IonList, IonThumbnail, IonImg } from "@ionic/vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  components: { IonItem, IonLabel, IonList },
+  components: { IonItem, IonLabel, IonList, IonThumbnail, IonImg },
+  computed: {
+    ...mapGetters({
+      dataSource: "userList",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      addUser: "addUser",
+    }),
+  },
 };
 </script>
 <style>

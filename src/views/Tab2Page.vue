@@ -27,6 +27,7 @@
 import { IonPage } from "@ionic/vue";
 import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 import { add } from "ionicons/icons";
+import { mapActions, mapGetters } from "vuex";
 
 import {
   DxDataGrid,
@@ -50,19 +51,17 @@ export default {
   data() {
     return {
       add,
-      dataSource: [
-        {
-          name: "Mota",
-          firstname: "Raphaël",
-          direction: "PTC",
-        },
-        {
-          name: "Fall",
-          firstname: "Birahim",
-          direction: "PTC",
-        },
-      ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      dataSource: "userList",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      addUser: "addUser",
+    }),
   },
 };
 </script>
