@@ -2,7 +2,7 @@
   <ion-page>
     <BaseLayout pageTitle="Advanced search">
       <template v-slot:actions-end>
-        <ion-button router-link="/userList/add">
+        <ion-button router-link="/users/add">
           <ion-icon slot="icon-only" :icon="add"></ion-icon>
         </ion-button>
       </template>
@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { IonPage } from "@ionic/vue";
+import { IonPage, IonButton, IonIcon } from "@ionic/vue";
 import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 import { add } from "ionicons/icons";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 import {
   DxDataGrid,
@@ -38,10 +38,11 @@ import {
 } from "devextreme-vue/data-grid";
 
 export default {
-  name: "TabUserGrid",
   components: {
     BaseLayout,
     IonPage,
+    IonButton,
+    IonIcon,
     DxDataGrid,
     DxColumn,
     DxGrouping,
@@ -49,18 +50,11 @@ export default {
     DxFilterRow,
   },
   data() {
-    return {
-      add,
-    };
+    return { add };
   },
   computed: {
     ...mapGetters({
       dataSource: "userList",
-    }),
-  },
-  methods: {
-    ...mapActions({
-      addUser: "addUser",
     }),
   },
 };

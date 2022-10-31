@@ -19,7 +19,6 @@ import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 import { add } from "ionicons/icons";
 
 export default {
-  name: "TabUserList",
   components: {
     BaseLayout,
     UserList,
@@ -30,6 +29,5 @@ export default {
   data() {
     return { add };
   },
-  methods: {},
 };
 </script>

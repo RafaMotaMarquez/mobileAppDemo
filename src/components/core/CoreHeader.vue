@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import { IonHeader, IonImg } from "@ionic/vue";
+import { IonHeader, IonToolbar, IonImg } from "@ionic/vue";
 export default {
   components: {
     IonHeader,
+    IonToolbar,
     IonImg,
   },
 };

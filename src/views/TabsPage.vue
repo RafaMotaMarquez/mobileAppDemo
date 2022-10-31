@@ -8,14 +8,14 @@
           <ion-label>Users</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="users-grid" href="/tabs/users-grid">
+        <ion-tab-button tab="grid" href="/tabs/grid">
           <ion-icon :icon="listCircleOutline" />
           <ion-label>User search</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="users-report" href="/tabs/users-report">
+        <ion-tab-button tab="report" href="/tabs/report">
           <ion-icon :icon="statsChartOutline" />
-          <ion-label>Dashboard</ion-label>
+          <ion-label>Report</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

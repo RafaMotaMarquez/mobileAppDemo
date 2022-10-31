@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-import TabsPage from '../views/TabsPage.vue'
+import TabsPage from '@/views/TabsPage.vue'
 
 const routes = [{
         path: '/',
@@ -8,7 +8,12 @@ const routes = [{
     {
         path: '/users/:id',
         component: () =>
-            import ('../views/UserDetails.vue')
+            import ('@/views/UserDetails.vue')
+    },
+    {
+        path: '/users/add',
+        component: () =>
+            import ('@/views/AddUser.vue')
     },
     {
         path: '/tabs/',
@@ -23,12 +28,12 @@ const routes = [{
                     import ('@/views/TabUserList.vue')
             },
             {
-                path: 'users-grid',
+                path: 'grid',
                 component: () =>
                     import ('@/views/TabUserGrid.vue')
             },
             {
-                path: 'users-report',
+                path: 'report',
                 component: () =>
                     import ('@/views/TabUserReport.vue')
             },

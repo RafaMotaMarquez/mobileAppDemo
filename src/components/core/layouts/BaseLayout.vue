@@ -1,5 +1,5 @@
 <template>
-  <core-header />
+  <CoreHeader />
   <ion-header>
     <ion-toolbar class="ion-margin-bottom">
       <ion-buttons slot="start">
@@ -20,21 +20,18 @@
 
 <script>
 import {
-  // IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
   IonBackButton,
   IonButtons,
-  // IonToolbar, IonTitle, IonContent
 } from "@ionic/vue";
 import CoreHeader from "@/components/core/CoreHeader.vue";
 
 export default {
   props: ["pageTitle", "pageDefaultBackLink"],
   components: {
-    // IonPage,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -42,10 +39,6 @@ export default {
     IonBackButton,
     IonButtons,
     CoreHeader,
-
-    // IonToolbar,
-    // IonTitle,
-    // IonContent,
   },
 };
 </script>
