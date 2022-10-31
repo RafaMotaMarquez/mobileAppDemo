@@ -1,66 +1,70 @@
 <template>
   <ion-page>
-    <core-header />
-    <ion-content :fullscreen="true">
-      <ion-toolbar class="ion-margin-bottom">
-        <ion-title size="default" class="ion-text-uppercase"
-          >Advanced data search</ion-title
-        >
-      </ion-toolbar>
-      <DxChart :data-source="data">
-        <DxArgumentAxis :tick-interval="10" />
-        <DxSeries type="bar" />
-        <DxLegend :visible="false" />
-      </DxChart>
-      <ExploreContainer name="Tab 2 page" />
-    </ion-content>
+    <BaseLayout pageTitle="Advanced search">
+      <template v-slot:actions-end>
+        <ion-button router-link="/userList/add">
+          <ion-icon slot="icon-only" :icon="add"></ion-icon>
+        </ion-button>
+      </template>
+
+      <DxDataGrid
+        :data-source="dataSource"
+        :allow-column-reordering="true"
+        :row-alternation-enabled="true"
+      >
+        <DxFilterRow :visible="true" />
+        <DxGroupPanel :visible="true" />
+        <DxGrouping :auto-expand-all="true" />
+        <DxColumn data-field="name" data-type="string" />
+        <DxColumn data-field="firstname" data-type="string" />
+        <DxColumn data-field="direction" data-type="string" :group-index="0" />
+      </DxDataGrid>
+    </BaseLayout>
   </ion-page>
 </template>
 
 <script>
-import CoreHeader from "@/components/core/CoreHeader.vue";
+import { IonPage } from "@ionic/vue";
+import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
+import { add } from "ionicons/icons";
 
-import { IonPage, IonToolbar, IonTitle, IonContent } from "@ionic/vue";
-import ExploreContainer from "@/components/ExploreContainer.vue";
-import DxChart, {
-  DxArgumentAxis,
-  DxSeries,
-  DxLegend,
-} from "devextreme-vue/chart";
-
-const data = [
-  {
-    arg: 1990,
-    val: 5320816667,
-  },
-  {
-    arg: 2000,
-    val: 6127700428,
-  },
-  {
-    arg: 2010,
-    val: 6916183482,
-  },
-];
+import {
+  DxDataGrid,
+  DxColumn,
+  DxGrouping,
+  DxGroupPanel,
+  DxFilterRow,
+} from "devextreme-vue/data-grid";
 
 export default {
   name: "Tab2Page",
   components: {
-    CoreHeader,
-    ExploreContainer,
-    IonToolbar,
-    IonTitle,
-    IonContent,
+    BaseLayout,
     IonPage,
-    DxChart,
-    DxArgumentAxis,
-    DxSeries,
-    DxLegend,
+    DxDataGrid,
+    DxColumn,
+    DxGrouping,
+    DxGroupPanel,
+    DxFilterRow,
   },
   data() {
     return {
-      data,
+      add,
+      dataSource: [
+        {
+          name: "Mota",
+          firstname: "Raphaël",
+          direction: "PTC",
+        },
+        {
+          name: "Fall",
+          firstname: "Birahim",
+          direction: "PTC",
+        },
+      ],
     };
   },
 };
 </script>
+<style>
+</style>

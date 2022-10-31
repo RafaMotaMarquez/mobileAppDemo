@@ -1,42 +1,56 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 3</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ExploreContainer name="Tab 3 page" />
-    </ion-content>
+    <BaseLayout pageTitle="User reports">
+      <DxChart :data-source="data">
+        <DxArgumentAxis :tick-interval="10" />
+        <DxSeries type="bar" />
+        <DxLegend :visible="false" />
+      </DxChart>
+    </BaseLayout>
   </ion-page>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-} from "@ionic/vue";
-import ExploreContainer from "@/components/ExploreContainer.vue";
+import { IonPage } from "@ionic/vue";
+import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
 
-export default defineComponent({
+import DxChart, {
+  DxArgumentAxis,
+  DxSeries,
+  DxLegend,
+} from "devextreme-vue/chart";
+
+const data = [
+  {
+    arg: 1990,
+    val: 5320816667,
+  },
+  {
+    arg: 2000,
+    val: 6127700428,
+  },
+  {
+    arg: 2010,
+    val: 6916183482,
+  },
+];
+
+export default {
   name: "Tab3Page",
   components: {
-    ExploreContainer,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
+    BaseLayout,
     IonPage,
+    DxChart,
+    DxArgumentAxis,
+    DxSeries,
+    DxLegend,
   },
-});
+  data() {
+    return {
+      data,
+    };
+  },
+};
 </script>
+<style>
+</style>
