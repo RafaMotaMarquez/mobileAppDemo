@@ -6,6 +6,7 @@ const store = createStore({
             userList: [{
                     id: '1',
                     image: 'https://xsgames.co/randomusers/avatar.php?g=male',
+                    gender: "male",
                     name: "Mota",
                     firstname: "Raphaël",
                     direction: "PTC",
@@ -13,6 +14,7 @@ const store = createStore({
                 {
                     id: '2',
                     image: 'https://xsgames.co/randomusers/avatar.php?g=male',
+                    gender: "male",
                     name: "Fall",
                     firstname: "Birahim",
                     direction: "PTC",
@@ -20,6 +22,7 @@ const store = createStore({
                 {
                     id: '3',
                     image: 'https://xsgames.co/randomusers/avatar.php?g=male',
+                    gender: "male",
                     name: "Mpo",
                     firstname: "Joseph",
                     direction: "PTC",
@@ -27,9 +30,26 @@ const store = createStore({
                 {
                     id: '4',
                     image: 'https://xsgames.co/randomusers/avatar.php?g=female',
+                    gender: "female",
                     name: "McFly",
                     firstname: "Lorraine",
-                    direction: "PTC",
+                    direction: "DCDEV",
+                },
+                {
+                    id: '5',
+                    image: 'https://xsgames.co/randomusers/avatar.php?g=female',
+                    gender: "female",
+                    name: "Joplin",
+                    firstname: "Jannis",
+                    direction: "DCDEV",
+                },
+                {
+                    id: '6',
+                    image: 'https://xsgames.co/randomusers/avatar.php?g=female',
+                    gender: "female",
+                    name: "Bens-McFly",
+                    firstname: "Lorraine",
+                    direction: "DCDEV",
                 },
             ],
         };
@@ -42,7 +62,7 @@ const store = createStore({
             return (userId) => {
                 return state.userList.find((x) => x.id === userId);
             };
-        },
+        }
     },
     actions: {
         addUser(context, payload) {

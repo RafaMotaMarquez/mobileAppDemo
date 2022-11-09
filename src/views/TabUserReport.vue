@@ -1,11 +1,22 @@
 <template>
   <ion-page>
     <BaseLayout pageTitle="User reports">
-      <DxChart :data-source="data">
-        <DxArgumentAxis :tick-interval="10" />
-        <DxSeries type="bar" />
-        <DxLegend :visible="false" />
-      </DxChart>
+      <DxPieChart
+        id="pie"
+        :data-source="dataSource"
+        palette="Bright"
+        title="Staff repartition"
+        @point-click="pointClickHandler($event)"
+        @legend-click="legendClickHandler($event)"
+      >
+        <DxSeries argument-field="direction" value-field="value">
+          <DxLabel :visible="true">
+            <DxConnector :visible="true" :width="1" />
+          </DxLabel>
+        </DxSeries>
+        <DxSize :width="500" />
+        <DxExport :enabled="true" />
+      </DxPieChart>
     </BaseLayout>
   </ion-page>
 </template>
@@ -13,43 +24,103 @@
 <script>
 import { IonPage } from "@ionic/vue";
 import BaseLayout from "@/components/core/layouts/BaseLayout.vue";
+import { mapGetters } from "vuex";
 
-import DxChart, {
-  DxArgumentAxis,
+import DxPieChart, {
+  DxSize,
   DxSeries,
-  DxLegend,
-} from "devextreme-vue/chart";
-
-const data = [
-  {
-    arg: 1990,
-    val: 5320816667,
-  },
-  {
-    arg: 2000,
-    val: 6127700428,
-  },
-  {
-    arg: 2010,
-    val: 6916183482,
-  },
-];
+  DxLabel,
+  DxConnector,
+  DxExport,
+} from "devextreme-vue/pie-chart";
 
 export default {
   components: {
     BaseLayout,
     IonPage,
-    DxChart,
-    DxArgumentAxis,
+    DxPieChart,
+    DxSize,
     DxSeries,
-    DxLegend,
+    DxLabel,
+    DxConnector,
+    DxExport,
   },
   data() {
     return {
-      data,
+      areas: [
+        {
+          country: "Russia",
+          area: 12,
+        },
+        {
+          country: "Canada",
+          area: 7,
+        },
+        {
+          country: "USA",
+          area: 7,
+        },
+        {
+          country: "China",
+          area: 7,
+        },
+        {
+          country: "Brazil",
+          area: 6,
+        },
+        {
+          country: "Australia",
+          area: 5,
+        },
+        {
+          country: "India",
+          area: 2,
+        },
+        {
+          country: "Others",
+          area: 55,
+        },
+      ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      userList: "userList",
+    }),
+    dataSource() {
+      return this.userList.map((item) => {
+        return {
+          // direction: this.userList.filter((item, index, arr) => arr.findIndex(e => e.id === item.id) === index),
+          direction: [...new Set(this.userList.direction)],
+          value: this.userList.filter((x) => x.direction == item.direction)
+            .length,
+        };
+      });
+    },
+  },
+  methods: {
+    pointClickHandler(e) {
+      this.toggleVisibility(e.target);
+    },
+    legendClickHandler(e) {
+      const arg = e.target;
+      const item = e.component.getAllSeries()[0].getPointsByArg(arg)[0];
+
+      this.toggleVisibility(item);
+    },
+    toggleVisibility(item) {
+      item.isVisible() ? item.hide() : item.show();
+    },
   },
 };
 </script>
+
 <style>
+#pie {
+  height: 440px;
+}
+
+#pie * {
+  margin: 0 auto;
+}
 </style>
